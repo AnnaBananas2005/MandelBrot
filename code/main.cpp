@@ -68,8 +68,7 @@ int main()
         Call loadText on the ComplexPlane object
     */
     plane.updateRender();
-    plane.loadText(newText); //mb no parameters?
-
+    plane.loadText(newText); 
     /*
         Draw Scene segment
         Clear the RenderWindow object
