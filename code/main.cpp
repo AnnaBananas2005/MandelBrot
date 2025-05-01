@@ -21,6 +21,7 @@ int main()
 
     Font newFont;
     newFont.loadFromFile("./ZillaSlab-Bold.ttf"); //put a new font
+    //mine is https://fonts.google.com/specimen/Roboto
 
     //Will be used as  a template for all of the strings
     Text newText("", newFont, 10);
