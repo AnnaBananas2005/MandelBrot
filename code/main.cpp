@@ -13,13 +13,7 @@ int main()
 {
     unsigned int screenWidth = VideoMode::getDesktopMode().width / 2.0;
     unsigned int screenHeight = VideoMode::getDesktopMode().height / 2.0;
-
-    /*class ComplexPlane : public Drawable { //inheritance
-    public:
-        VertexArray Points;
-    private:
-        //put smt here
-    };*/
+    
     VertexArray vertices(Points);
 
     RenderWindow window(VideoMode(screenWidth, screenHeight), "Complex plane!"); //RenderWindows is required to have string
@@ -34,60 +28,57 @@ int main()
     newText.setStyle(Text::Bold);
 
     Event event;
-    while (window.pollEvent(event))
-    {
-        if (event.type == Event::Closed)
-        {
-            window.close(); 
-        }
-        if (event.type == Event::MouseButtonPressed)
-        {
-            if (event.mouseButton.button == Mouse::Left)
-            {
-                //Left click will zoomIn and call setCenter on the ComplexPlane object
-                // with the(x, y) pixel location of the mouse click
-                std::cout << "the left button was pressed" << std::endl;
-                std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-                std::cout << "mouse y: " << event.mouseButton.y << std::endl;
-
-                plane.zoomIn(); 
-                Vector2i mousePos = Mouse::getPosition();
-                plane.setCenter(mousePos);
-            }
-            else if (event.mouseButton.button == Mouse::Right) {
-            //Right click will zoomOut and call setCenter on the ComplexPlane 
-            //object with the (x,y) pixel location of the mouse click
-                std::cout << "the right button was pressed" << std::endl;
-                std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-                std::cout << "mouse y: " << event.mouseButton.y << std::endl;
-                
-                plane.zoomOut();
-                Vector2i mousePs = Mouse::getPosition();
-                plane.setCenter(mousePs);
-
-            }
-            
-        }
-        else if (event.type == Event::MouseMoved) { 
-            //Call setMouseLocation on the ComplexPlane object to store the (x,y) pixel location of the mouse click
-            //This will be used later to display the mouse coordinates as it moves
-            Vector2i mouseMo = Mouse::getPosition();
-            plane.setCenter(mouseMo);
-        }
-        if (Keyboard::isKeyPressed(Keyboard::Escape))
-        {
+    while (window.isOpen()) {
+    while (window.pollEvent(event)) {
+        if (event.type == Event::Closed) {
             window.close();
         }
-        //Will call the render to update it and fixing the size
-        plane.updateRender();
-        //Updates the text that has the location of the cursor and the center
-        plane.loadText(newText);
+        if (event.type == Event::MouseButtonPressed) {
+            if (event.mouseButton.button == Mouse::Left) {
+                plane.zoomIn();
+                plane.setCenter({ event.mouseButton.x, event.mouseButton.y });
+                //Left click will zoomIn and call setCenter on the ComplexPlane object
+                // with the(x, y) pixel location of the mouse click
+            }
+            else if (event.mouseButton.button == Mouse::Right) {
+                plane.zoomOut();
+                plane.setCenter({ event.mouseButton.x, event.mouseButton.y });
+                //Right click will zoomOut and call setCenter on the ComplexPlane 
+                //object with the (x,y) pixel location of the mouse click
+            }
+        }
+        if (event.type == Event::MouseMoved) {
+            plane.setMouseLocation({ event.mouseMove.x, event.mouseMove.y });
+            //Call setMouseLocation on the ComplexPlane object to store the (x,y) pixel location of the mouse click
+            //This will be used later to display the mouse coordinates as it moves
+        }
     }
-    //will draw all the items on the screen and display it for the user to see
+
+    if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+        window.close();
+    }
+    /*
+    Update Scene segment
+        Call updateRender on the ComplexPlane object
+        Call loadText on the ComplexPlane object
+    */
+
+    plane.updateRender();
+    plane.loadText(newText);
+
+    /*
+        Draw Scene segment
+        Clear the RenderWindow object
+        draw the ComplexPlane object
+        draw the Text object
+        Display the RenderWindow object
+    */
+
     window.clear();
     window.draw(plane);
     window.draw(newText);
     window.display();
+}
     
     return 0;
 }
