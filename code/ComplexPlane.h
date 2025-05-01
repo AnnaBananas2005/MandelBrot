@@ -1,3 +1,13 @@
+#ifndef COMPLEXPLANE_H
+#define COMPLEXPLANE_H
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/VertexArray.hpp>
+#include <SFML/System/Vector2.hpp>
+#include <iostream>
+#include <sstream>
+#include <complex>
+//Partnered with Anna :3 
 //Done by Anna :D
 
 using namespace sf;
@@ -9,10 +19,10 @@ const float BASE_ZOOM = 0.5;
 
 enum class State {
     CALCULATING,
-    DISPLAYING;
+    DISPLAYING
 };
 
-class ComplexPlane : public Drawable { 
+class ComplexPlane : public Drawable { //inheritance (I think its drawable)
 public:
     ComplexPlane(int pixelWidth, int pixelHeight);
     virtual void draw(RenderTarget& target, RenderStates state) const; //mb virtual
@@ -38,3 +48,5 @@ private:
     float m_aspectRatio;
 
 };
+
+#endif
