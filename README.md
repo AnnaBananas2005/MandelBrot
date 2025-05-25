@@ -1,7 +1,7 @@
 # Mandelbrot Set
 
 ![matrixMandelBrot](https://github.com/user-attachments/assets/d6ac8e4e-eda2-4499-9d9e-74a9d4e823fa)
-(My screen had this cool 'Matrix'-like effect to it)
+(My screen had this cool 'Matrix'-like effect to it when I put it on 'full screen')
 
 Zoomed in
 ![Screenshot 2025-05-01 230339](https://github.com/user-attachments/assets/9d4c5c07-dcfa-429c-8348-6ee7b6b605bc)
