@@ -10,4 +10,20 @@ Zoomed in
 Zoomed in EVEN MORE (my computer almost crashed at this point)
 ![Screenshot 2025-05-01 230555](https://github.com/user-attachments/assets/d156cbb9-19e2-420e-bd65-2f3b12564d49)
 
+## How to run it - Cloning with GIT
+
+1. Click the green button 'Code', and copy the HTTPS link
+2. Open your git bash terminal OR any IDE that has Git built into them (VS, VS code, etc)
+3. Run:
+<pre style="font-family: 'Courier New', monospace; font-size: 16px; background-color: #1e1e1e; color: #dcdcdc; padding: 10px; border-radius: 5px;">
+git clone https://github.com/AnnaBananas2005/MandelBrot.git
+</pre>
+
+## Run it
+1. Change to MandelBrot directory
+<pre style="font-family: 'Courier New', monospace; font-size: 16px; background-color: #1e1e1e; color: #dcdcdc; padding: 10px; border-radius: 5px;">
+make
+make run
+</pre>
+
 
